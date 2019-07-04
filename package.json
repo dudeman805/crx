@@ -19,7 +19,9 @@
   "scripts": {
     "test": "nyc tape ./test/*.js",
     "version": "npm run changelog && git add CHANGELOG.md",
-    "changelog": "github-changes -o oncletom -r crx -n ${npm_package_version}  --only-pulls --use-commit-body"
+    "changelog": "github-changes -o oncletom -r crx -n ${npm_package_version}  --only-pulls --use-commit-body",
+    "snyk-protect": "snyk protect",
+    "prepublish": "npm run snyk-protect"
   },
   "nyc": {
     "functions": 100,
@@ -35,12 +37,14 @@
     "archiver": "^1.1.0",
     "commander": "^2.5.0",
     "es6-promise": "^3.0.0",
-    "node-rsa": "^0.2.10"
+    "node-rsa": "^0.2.10",
+    "snyk": "^1.192.0"
   },
   "devDependencies": {
     "adm-zip": "^0.4.7",
     "github-changes": "^1.0.0",
     "nyc": "^8.3.0",
     "tape": "^4.6.0"
-  }
+  },
+  "snyk": true
 }
